@@ -26,7 +26,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   volver() :void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/list']);
   }
-
 }

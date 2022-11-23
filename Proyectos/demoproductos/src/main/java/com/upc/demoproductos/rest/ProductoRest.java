@@ -42,6 +42,32 @@ public class ProductoRest {
          }
          return p;
     }
+    @PutMapping("/producto/{codigo}")
+    public Producto actualizar(@PathVariable(value = "codigo") Long codigo, @RequestBody Producto producto){
+        Producto p;
+        try {
+            var _producto = productoNegocio.buscar(codigo);
+            _producto.setDescripcion(producto.getDescripcion());
+            _producto.setPrecio(producto.getPrecio());
+            _producto.setStock(producto.getStock());
+            p = productoNegocio.actualizar(_producto);
+        }catch (Exception e){
+            logger.error("Error en actualizar", e);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se puede",e);
+        }
+        return p;
+    }
+
+    @DeleteMapping("/producto/{codigo}")
+    public void eliminar(@PathVariable(value = "codigo") Long codigo){
+        try {
+            productoNegocio.eliminar(codigo);
+        }catch (Exception e){
+            logger.error("Error en eliminar", e);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se puede",e);
+        }
+    }
+
     @GetMapping("producto/{codigo}")
     public Producto buscar(@PathVariable(value = "codigo") Long codigo){
         try {
@@ -51,7 +77,4 @@ public class ProductoRest {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No existe",e);
         }
     }
-
-
-
 }

@@ -15,8 +15,8 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProductList() : Observable<any> {
-    console.log("Llamando a REST:"+ this.urlBase + "/productosVentas");
-    return this.http.get(this.urlBase+"/productosVentas").pipe(
+    console.log("Llamando a REST:"+ this.urlBase + "/productosTotal");
+    return this.http.get(this.urlBase+"/productosTotal").pipe(
       map(response => response as Product[])
     );
   }
@@ -25,8 +25,19 @@ export class ProductService {
     return this.http.post(this.urlBase+"/producto", product,
     {headers:this.httpHeaders});
   }
+
   public detail(codigo: number): Observable<Product> {
-    return this.http.get<Product>(this.urlBase+ "/entidad/" + codigo);
+    return this.http.get<Product>(this.urlBase+ "/producto/" + codigo);
   }
 
+  updateProduct(product:Object, codigo: number) : Observable<Object>{
+    return this.http.put(this.urlBase + `/producto/${codigo}`, product,
+    {headers:this.httpHeaders});
+  }
+
+  deleteProduct(codigo: number): Observable<Object>{
+    console.log("Llamando a REST:"+ this.urlBase + `/producto/${codigo}`);
+    return this.http.delete(this.urlBase + `/producto/${codigo}`,
+    {headers:this.httpHeaders});
+  }
 }

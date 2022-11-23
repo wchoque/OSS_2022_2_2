@@ -11,6 +11,7 @@ import { HomeProductComponent } from './home-product/home-product.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UpdateProductComponent } from './update-product/update-product.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProductDetailsComponent,
     SearchProductComponent,
     HomeProductComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule,

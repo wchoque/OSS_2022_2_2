@@ -24,8 +24,8 @@
                       <th>{{p.stock}}</th>
                       <th>{{p.total}}</th>
                       <th><button class="btn btn-outline-primary" routerLink="/detalle/{{p.codigo}}"><i class="far fa-eye"></i> Ver</button></th>
-                      <th><button class="btn btn-outline-warning" ><i class="far fa-edit"></i> Editar</button></th>
-                      <th><button class="btn btn-outline-danger" ><i class="far fa-trash-alt"></i> Eliminar</button></th>
+                      <th><button class="btn btn-outline-warning" routerLink="/update/{{p.codigo}}"><i class="far fa-edit"></i> Editar</button></th>
+                      <th><button class="btn btn-outline-danger" (click)="onDelete(p.codigo)" ><i class="far fa-trash-alt"></i> Eliminar</button></th>
                   </tr>
               </tbody>
 

@@ -9,6 +9,7 @@ public interface IProductoNegocio {
     public Producto buscar(Long codigo) throws Exception;
     public List<Producto> listado();
     public Producto actualizar(Producto producto) throws  Exception;
+    public void eliminar(long codigo) throws  Exception;
 
     public double calcularIGV(Producto producto);
     public double calcularDescuento(Producto producto);
